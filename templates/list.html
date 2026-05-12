@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} — CoreStudio{% endblock %}
+
+{% block content %}
+<div style="max-width:72rem;margin:0 auto;padding:3rem 1rem;">
+  <div style="margin-bottom:2rem;">
+    <h1 style="font-size:2.5rem;font-weight:700;">{{ title }}</h1>
+    <p style="margin-top:0.5rem;color:oklch(0.65 0.02 160);">{{ desc }}</p>
+  </div>
+
+  {% if items %}
+  <div style="display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));">
+    {% for p in items %}
+      {% include "partials/project_card.html" %}
+    {% endfor %}
+  </div>
+  {% else %}
+  <div style="border-radius:0.875rem;border:1px dashed oklch(0.27 0.02 160);padding:4rem 1rem;text-align:center;">
+    {% if type == 'mod' %}
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="oklch(0.65 0.02 160)" stroke-width="1.5" opacity="0.4" style="margin:0 auto;" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
+    {% else %}
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="oklch(0.65 0.02 160)" stroke-width="1.5" opacity="0.4" style="margin:0 auto;" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" x2="2" y1="8" y2="22"/><line x1="17.5" x2="9" y1="15" y2="15"/></svg>
+    {% endif %}
+    <p style="margin-top:1rem;color:oklch(0.65 0.02 160);">Hozircha {{ "modlar" if type == "mod" else "pluginlar" }} yo'q.</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

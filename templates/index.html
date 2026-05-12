@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}CoreStudio — Minecraft Mod va Pluginlar{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section style="position:relative;overflow:hidden;">
+  <div class="hero-bg" style="position:absolute;inset:0;"></div>
+  <div style="position:relative;max-width:72rem;margin:0 auto;padding:6rem 1rem 5rem;text-align:center;">
+    
+    <span style="display:inline-flex;align-items:center;gap:0.375rem;border-radius:9999px;border:1px solid oklch(0.78 0.17 160 / 0.3);background:oklch(0.78 0.17 160 / 0.1);padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:500;color:oklch(0.78 0.17 160);">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+      Minecraft kontent platformasi
+    </span>
+
+    <h1 style="margin-top:1.5rem;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;letter-spacing:-0.03em;line-height:1.1;">
+      Modlar va Pluginlar
+      <span style="display:block;background:linear-gradient(to right,oklch(0.78 0.17 160),oklch(0.85 0.15 160));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+        Kashf eting va ulashing
+      </span>
+    </h1>
+
+    <p style="max-width:40rem;margin:1.5rem auto 0;font-size:1.125rem;color:oklch(0.65 0.02 160);line-height:1.7;">
+      Community tomonidan yaratilgan minglab Minecraft modlari va pluginlarini ko'rib chiqing.
+      Kerakligini toping yoki o'zingiznikini yuklang.
+    </p>
+
+    <div style="margin-top:2.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.75rem;">
+      <a href="/mods" class="btn-primary">
+        Loyihalarni ko'rish
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a href="/plugins" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" x2="2" y1="8" y2="22"/><line x1="17.5" x2="9" y1="15" y2="15"/></svg>
+        Pluginlar
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div style="margin-top:4rem;display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;max-width:48rem;margin-left:auto;margin-right:auto;">
+      {% set stat_items = [
+        ('Loyihalar', stats.projects, '<path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>'),
+        ('Yuklab olishlar', stats.downloads, '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/>'),
+        ('Modlar', stats.mods, '<path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>'),
+        ('Pluginlar', stats.plugins, '<path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" x2="2" y1="8" y2="22"/><line x1="17.5" x2="9" y1="15" y2="15"/>'),
+      ] %}
+      {% for label, value, icon_path in stat_items %}
+      <div class="card" style="padding:1.25rem;text-align:center;background:oklch(0.18 0.02 160 / 0.5);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="oklch(0.78 0.17 160)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 0.5rem;">{{ icon_path|safe }}</svg>
+        <div style="font-size:1.75rem;font-weight:700;">{{ value }}</div>
+        <div style="font-size:0.75rem;color:oklch(0.65 0.02 160);">{{ label }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    <style>@media(min-width:768px){.stats-grid{grid-template-columns:repeat(4,1fr)!important}}</style>
+  </div>
+</section>
+
+<!-- Category Cards -->
+<section style="max-width:72rem;margin:0 auto;padding:4rem 1rem;">
+  <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;">Turlar bo'yicha</h2>
+  <div style="display:grid;gap:1rem;grid-template-columns:1fr;" class="md-grid-2">
+    <a href="/mods" style="text-decoration:none;display:block;border-radius:1rem;border:1px solid oklch(0.27 0.02 160);background:linear-gradient(135deg,oklch(0.55 0.15 240 / 0.1),transparent);padding:2rem;transition:border-color 0.2s;" onmouseover="this.style.borderColor='oklch(0.6 0.2 240 / 0.6)'" onmouseout="this.style.borderColor='oklch(0.27 0.02 160)'">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="oklch(0.6 0.2 240)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:1rem;"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
+      <h3 style="font-size:1.25rem;font-weight:700;">Modlar</h3>
+      <p style="margin-top:0.5rem;font-size:0.875rem;color:oklch(0.65 0.02 160);">Forge, Fabric, NeoForge va Quilt modlari — yangi imkoniyatlar, narsalar va mexanikalar qo'shadi.</p>
+      <span style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.25rem;font-size:0.875rem;font-weight:500;color:oklch(0.6 0.2 240);">
+        Modlarni ko'rish <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </span>
+    </a>
+    <a href="/plugins" style="text-decoration:none;display:block;border-radius:1rem;border:1px solid oklch(0.27 0.02 160);background:linear-gradient(135deg,oklch(0.7 0.15 80 / 0.1),transparent);padding:2rem;transition:border-color 0.2s;" onmouseover="this.style.borderColor='oklch(0.75 0.18 80 / 0.6)'" onmouseout="this.style.borderColor='oklch(0.27 0.02 160)'">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="oklch(0.75 0.18 80)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:1rem;"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" x2="2" y1="8" y2="22"/><line x1="17.5" x2="9" y1="15" y2="15"/></svg>
+      <h3 style="font-size:1.25rem;font-weight:700;">Pluginlar</h3>
+      <p style="margin-top:0.5rem;font-size:0.875rem;color:oklch(0.65 0.02 160);">Bukkit, Spigot va Paper pluginlari — server boshqaruvi va o'yin tajribasini yaxshilash uchun.</p>
+      <span style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.25rem;font-size:0.875rem;font-weight:500;color:oklch(0.75 0.18 80);">
+        Pluginlarni ko'rish <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- Recent Projects -->
+{% if projects %}
+<section style="max-width:72rem;margin:0 auto;padding:0 1rem 4rem;">
+  <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;">So'nggi qo'shilganlar</h2>
+  <div style="display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));">
+    {% for p in projects %}
+      {% include "partials/project_card.html" %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<style>
+@media(min-width:768px){
+  .md-grid-2{grid-template-columns:1fr 1fr!important}
+}
+</style>
+{% endblock %}

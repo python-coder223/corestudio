@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}{{ p.name }} — CoreStudio{% endblock %}
+
+{% block content %}
+<div style="max-width:56rem;margin:0 auto;padding:2.5rem 1rem;">
+  <a href="/" style="display:inline-flex;align-items:center;gap:0.25rem;font-size:0.875rem;color:oklch(0.65 0.02 160);text-decoration:none;margin-bottom:1.5rem;transition:color 0.15s;" onmouseover="this.style.color='oklch(0.97 0.01 160)'" onmouseout="this.style.color='oklch(0.65 0.02 160)'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+    Orqaga
+  </a>
+
+  <div class="card" style="overflow:hidden;">
+    {% if p.image_url %}
+    <img src="{{ p.image_url }}" alt="{{ p.name }}" style="aspect-ratio:16/9;width:100%;object-fit:cover;">
+    {% endif %}
+
+    <div style="padding:2rem;">
+      <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:oklch(0.65 0.02 160);">
+        {% if p.type == 'mod' %}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="oklch(0.6 0.2 240)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
+        Mod
+        {% else %}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="oklch(0.75 0.18 80)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" x2="2" y1="8" y2="22"/><line x1="17.5" x2="9" y1="15" y2="15"/></svg>
+        Plugin
+        {% endif %}
+      </div>
+
+      <h1 style="margin-top:0.5rem;font-size:2.5rem;font-weight:700;">{{ p.name }}</h1>
+      <p style="margin-top:0.25rem;font-size:0.875rem;color:oklch(0.65 0.02 160);">Muallif: {{ p.author or "Noma'lum" }}</p>
+
+      <!-- Info Grid -->
+      <div style="margin-top:1.5rem;display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;">
+        {% for label, value in [
+          ('Versiya', p.version),
+          ('MC versiya', p.mc_version or '—'),
+          ('Loader', p.loader or '—'),
+          ('Yuklab olishlar', p.downloads|string),
+        ] %}
+        <div style="border-radius:0.5rem;border:1px solid oklch(0.27 0.02 160);background:oklch(0.24 0.02 160 / 0.4);padding:0.75rem;">
+          <div style="font-size:0.75rem;color:oklch(0.65 0.02 160);">{{ label }}</div>
+          <div style="margin-top:0.25rem;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ value }}</div>
+        </div>
+        {% endfor %}
+      </div>
+
+      {% if p.description %}
+      <p style="margin-top:1.5rem;line-height:1.75;color:oklch(0.65 0.02 160);white-space:pre-wrap;">{{ p.description }}</p>
+      {% endif %}
+
+      {% if p.file_url %}
+      <a href="/project/{{ p.id }}/download" class="btn-primary" style="margin-top:2rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        Yuklab olish
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+@media(min-width:640px){
+  div[style*="grid-template-columns:repeat(2"]{grid-template-columns:repeat(4,1fr)!important}
+}
+</style>
+{% endblock %}

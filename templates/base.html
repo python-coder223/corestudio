@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="uz" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}CoreStudio{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            background: 'oklch(0.14 0.02 160)',
+            foreground: 'oklch(0.97 0.01 160)',
+            card: 'oklch(0.18 0.02 160)',
+            primary: {
+              DEFAULT: 'oklch(0.78 0.17 160)',
+              foreground: 'oklch(0.14 0.02 160)',
+            },
+            secondary: {
+              DEFAULT: 'oklch(0.24 0.02 160)',
+              foreground: 'oklch(0.97 0.01 160)',
+            },
+            muted: {
+              DEFAULT: 'oklch(0.22 0.015 160)',
+              foreground: 'oklch(0.65 0.02 160)',
+            },
+            border: 'oklch(0.27 0.02 160)',
+            input: 'oklch(0.22 0.02 160)',
+            destructive: {
+              DEFAULT: 'oklch(0.62 0.22 25)',
+              foreground: 'oklch(0.98 0 0)',
+            },
+          },
+          borderRadius: {
+            xl: '0.875rem',
+            '2xl': '1.125rem',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --gradient-hero: radial-gradient(ellipse at center top, oklch(0.78 0.17 160 / 0.18), transparent 60%);
+    }
+    body {
+      background-color: oklch(0.14 0.02 160);
+      color: oklch(0.97 0.01 160);
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .hero-bg { background-image: var(--gradient-hero); }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: oklch(0.78 0.17 160); color: oklch(0.14 0.02 160);
+      padding: 0.625rem 1.5rem; border-radius: 0.5rem; font-weight: 600;
+      transition: opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1px solid oklch(0.27 0.02 160); background: oklch(0.24 0.02 160 / 0.6);
+      padding: 0.625rem 1.5rem; border-radius: 0.5rem; font-weight: 600;
+      transition: background 0.15s;
+    }
+    .btn-secondary:hover { background: oklch(0.24 0.02 160); }
+    .card {
+      background: oklch(0.18 0.02 160);
+      border: 1px solid oklch(0.27 0.02 160);
+      border-radius: 0.875rem;
+    }
+    .inp {
+      width: 100%; border-radius: 0.5rem;
+      border: 1px solid oklch(0.27 0.02 160);
+      background: oklch(0.22 0.02 160);
+      padding: 0.5rem 0.75rem; outline: none;
+      color: oklch(0.97 0.01 160);
+      transition: border-color 0.15s;
+    }
+    .inp:focus { border-color: oklch(0.78 0.17 160); }
+    select.inp option { background: oklch(0.22 0.02 160); }
+    .badge {
+      display: inline-block; padding: 0.125rem 0.5rem; border-radius: 0.25rem;
+      font-size: 0.75rem; background: oklch(0.24 0.02 160);
+      color: oklch(0.65 0.02 160);
+    }
+    .project-card {
+      display: flex; flex-direction: column; overflow: hidden;
+      border-radius: 0.875rem; border: 1px solid oklch(0.27 0.02 160);
+      background: oklch(0.18 0.02 160);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      border-color: oklch(0.78 0.17 160 / 0.6);
+      box-shadow: 0 8px 32px oklch(0.78 0.17 160 / 0.1);
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: oklch(0.14 0.02 160); }
+    ::-webkit-scrollbar-thumb { background: oklch(0.27 0.02 160); border-radius: 3px; }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header style="position:sticky;top:0;z-index:40;border-bottom:1px solid oklch(0.27 0.02 160 / 0.6);background:oklch(0.14 0.02 160 / 0.8);backdrop-filter:blur(12px);">
+    <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:4rem;padding:0 1rem;">
+      <a href="/" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;user-select:none;">
+        <span style="display:grid;place-items:center;height:2.25rem;width:2.25rem;border-radius:0.5rem;background:oklch(0.78 0.17 160);color:oklch(0.14 0.02 160);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+        </span>
+        <span style="font-size:1.125rem;font-weight:700;letter-spacing:-0.02em;color:oklch(0.97 0.01 160);">
+          Core<span style="color:oklch(0.78 0.17 160);">Studio</span>
+        </span>
+      </a>
+      <nav style="display:flex;align-items:center;gap:1.5rem;font-size:0.875rem;">
+        <a href="/mods" style="color:oklch(0.65 0.02 160);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='oklch(0.97 0.01 160)'" onmouseout="this.style.color='oklch(0.65 0.02 160)'">Modlar</a>
+        <a href="/plugins" style="color:oklch(0.65 0.02 160);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='oklch(0.97 0.01 160)'" onmouseout="this.style.color='oklch(0.65 0.02 160)'">Pluginlar</a>
+
+      </nav>
+    </div>
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <!-- Footer -->
+  <footer style="margin-top:5rem;border-top:1px solid oklch(0.27 0.02 160);padding:2.5rem 1rem;text-align:center;font-size:0.875rem;color:oklch(0.65 0.02 160);">
+    © 2025 CoreStudio — Minecraft Mod va Plugin Platformasi
+  </footer>
+</body>
+</html>
